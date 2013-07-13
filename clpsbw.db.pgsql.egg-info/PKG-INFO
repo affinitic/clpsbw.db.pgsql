@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: clpsbw.db.pgsql
+Version: 0.2dev
+Summary: DB postgresql connexion
+Home-page: http://svn.affinitic.be/plone/clps/clpsbw.db.pgsql
+Author: Affinitic
+Author-email: info@affinitic.be
+License: GPL
+Description: UNKNOWN
+Keywords: postgresql clps
+Platform: UNKNOWN
