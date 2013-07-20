@@ -10,10 +10,10 @@ def getAllProvince(metadata):
     province = Table('province', metadata,
                     Column('prov_pk', Integer(),
                            Sequence('province_prov_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('prov_nom', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return province
 
 
@@ -24,7 +24,7 @@ def getAllCommune(metadata):
     commune = Table('commune', metadata,
                     Column('com_pk', Integer(),
                            Sequence('commune_com_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('com_localite_cp', Text()),
                     Column('com_localite_nom', Text()),
                     Column('com_commune_cp', Text()),
@@ -34,7 +34,7 @@ def getAllCommune(metadata):
                            ForeignKey('province.prov_pk'),
                            nullable=False),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return commune
 
 
@@ -45,11 +45,11 @@ def getAllClps(metadata):
     clps = Table('clps', metadata,
                  Column('clps_pk', Integer(),
                         Sequence('clps_clps_pk_seq', optional=True),
-                        primary_key = True),
+                        primary_key=True),
                  Column('clps_nom', Text()),
                  autoload=autoload)
     return clps
- 
+
 
 def getAllPlateForme(metadata):
     autoload = False
@@ -58,14 +58,14 @@ def getAllPlateForme(metadata):
     plateforme = Table('plateforme', metadata,
                        Column('plateforme_pk', Integer(),
                               Sequence('plateforme_plateforme_pk_seq'),
-                              primary_key = True),
+                              primary_key=True),
                       Column('plateforme_nom', Text()),
                       Column('plateforme_actif', Boolean()),
-                      Column('plateforme_creation_date', DateTime(), default = func.now()),
+                      Column('plateforme_creation_date', DateTime(), default=func.now()),
                       Column('plateforme_modification_date', DateTime()),
                       Column('plateforme_modification_employe', Text()),
                       autoload=autoload,
-                      useexisting=True)
+                      extend_existing=True)
     return plateforme
 
 
@@ -76,17 +76,17 @@ def getAllSousPlateForme(metadata):
     sousplateforme = Table('sousplateforme', metadata,
                             Column('sousplateforme_pk', Integer(),
                                    Sequence('sousplateforme_sousplateforme_pk_seq'),
-                                   primary_key = True),
+                                   primary_key=True),
                             Column('sousplateforme_nom', Text()),
                             Column('sousplateforme_actif', Boolean()),
-                            Column('sousplateforme_creation_date', DateTime(), default = func.now()),
+                            Column('sousplateforme_creation_date', DateTime(), default=func.now()),
                             Column('sousplateforme_modification_date', DateTime()),
                             Column('sousplateforme_modification_employe', Text()),
                             Column('sousplateforme_plateforme_fk', Integer(),
                                    ForeignKey('plateforme.plateforme_pk'),
                                    nullable=False),
                             autoload=autoload,
-                            useexisting=True)
+                            extend_existing=True)
     return sousplateforme
 
 
@@ -97,14 +97,14 @@ def getAllMotCle(metadata):
     motCle = Table('mot_cle', metadata,
                     Column('motcle_pk', Integer(),
                            Sequence('mot_cle_motcle_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('motcle_mot', Text()),
                     Column('motcle_actif', Boolean()),
-                    Column('motcle_creation_date', DateTime(), default = func.now()),
+                    Column('motcle_creation_date', DateTime(), default=func.now()),
                     Column('motcle_modification_date', DateTime()),
                     Column('motcle_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return motCle
 
 
@@ -115,16 +115,16 @@ def getAllTheme(metadata):
     theme = Table('theme', metadata,
                     Column('theme_pk', Integer(),
                            Sequence('theme_theme_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('theme_nom', Text()),
                     Column('theme_actif', Boolean()),
                     Column('theme_experience', Boolean()),
                     Column('theme_ressource', Boolean()),
-                    Column('theme_creation_date', DateTime(), default = func.now()),
+                    Column('theme_creation_date', DateTime(), default=func.now()),
                     Column('theme_modification_date', DateTime()),
                     Column('theme_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return theme
 
 
@@ -135,14 +135,14 @@ def getAllPublic(metadata):
     public = Table('public', metadata,
                     Column('public_pk', Integer(),
                            Sequence('public_public_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('public_nom', Text()),
                     Column('public_actif', Boolean()),
-                    Column('public_creation_date', DateTime(), default = func.now()),
+                    Column('public_creation_date', DateTime(), default=func.now()),
                     Column('public_modification_date', DateTime()),
                     Column('public_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return public
 
 
@@ -153,14 +153,14 @@ def getAllMilieuDeVie(metadata):
     milieudevie = Table('milieudevie', metadata,
                     Column('milieudevie_pk', Integer(),
                            Sequence('milieudevie_milieudevie_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('milieudevie_nom', Text()),
                     Column('milieudevie_actif', Boolean()),
-                    Column('milieudevie_creation_date', DateTime(), default = func.now()),
+                    Column('milieudevie_creation_date', DateTime(), default=func.now()),
                     Column('milieudevie_modification_date', DateTime()),
                     Column('milieudevie_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return milieudevie
 
 
@@ -171,7 +171,7 @@ def getAllInstitution(metadata):
     institution = Table('institution', metadata,
                         Column('institution_pk', Integer(),
                                Sequence('institution_institution_pk_seq'),
-                               primary_key = True),
+                               primary_key=True),
                         Column('institution_nom', Text()),
                         Column('institution_sigle', Text()),
                         Column('institution_adresse', Text()),
@@ -188,7 +188,7 @@ def getAllInstitution(metadata):
                         Column('institution_public', Text()),
                         Column('institution_etat', Text()),
                         Column('institution_creation_date', DateTime()),
-                        Column('institution_modification_date', DateTime(), default = func.now()),
+                        Column('institution_modification_date', DateTime(), default=func.now()),
                         Column('institution_modification_employe', Text()),
                         Column('institution_territoire_tout_brabant_wallon', Boolean()),
                         Column('institution_zone_internationale', Boolean()),
@@ -224,7 +224,7 @@ def getAllInstitution(metadata):
                            ForeignKey('auteur.auteur_pk'),
                            nullable=False),
                         autoload=autoload,
-                        useexisting=True)
+                        extend_existing=True)
     return institution
 
 
@@ -232,17 +232,17 @@ def getAllInstitutionType(metadata):
     autoload = False
     if metadata.bind.has_table('institution_type'):
         autoload = True
-    institutionType =Table('institution_type', metadata,
-                            Column('institution_type_pk', Integer(),
-                                   Sequence('institution_type_pk_seq'),
-                                   primary_key = True),
-                            Column('institution_type_nom', Text()),
-                            Column('institution_type_actif', Boolean()),
-                            Column('institution_type_creation_date', DateTime()),
-                            Column('institution_type_modification_date', DateTime(), default = func.now()),
-                            Column('institution_type_modification_employe', Text()),
-                            useexisting=True,
-                            autoload=autoload)
+    institutionType = Table('institution_type', metadata,
+                             Column('institution_type_pk', Integer(),
+                                    Sequence('institution_type_pk_seq'),
+                                    primary_key=True),
+                             Column('institution_type_nom', Text()),
+                             Column('institution_type_actif', Boolean()),
+                             Column('institution_type_creation_date', DateTime()),
+                             Column('institution_type_modification_date', DateTime(), default=func.now()),
+                             Column('institution_type_modification_employe', Text()),
+                             extend_existing=True,
+                             autoload=autoload)
     return institutionType
 
 
@@ -250,19 +250,19 @@ def getAllAssuetudeInterventionForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('assuetude_intervention_for_institution'):
         autoload = True
-    assuetudeInterventionForInstitution =Table('assuetude_intervention_for_institution', metadata,
-                                               Column('assuetude_intervention_pk', Integer(),
-                                                       Sequence('assuetude_intervention_pk_seq'),
-                                                       primary_key = True),
-                                               Column('assuetude_intervention_nom', Text()),
-                                               Column('assuetude_intervention_actif', Boolean(), default = True),
-                                               Column('assuetude_intervention_actif', Boolean(), default = True),
-                                               Column('assuetude_intervention_num_ordre', Integer(), default = 0),
-                                               Column('assuetude_intervention_creation_date', DateTime()),
-                                               Column('assuetude_intervention_modification_date', DateTime(), default = func.now()),
-                                               Column('assuetude_intervention_modification_employe', Text()),
-                                               useexisting=True,
-                                               autoload=autoload)
+    assuetudeInterventionForInstitution = Table('assuetude_intervention_for_institution', metadata,
+                                                Column('assuetude_intervention_pk', Integer(),
+                                                        Sequence('assuetude_intervention_pk_seq'),
+                                                        primary_key=True),
+                                                Column('assuetude_intervention_nom', Text()),
+                                                Column('assuetude_intervention_actif', Boolean(), default=True),
+                                                Column('assuetude_intervention_actif', Boolean(), default=True),
+                                                Column('assuetude_intervention_num_ordre', Integer(), default=0),
+                                                Column('assuetude_intervention_creation_date', DateTime()),
+                                                Column('assuetude_intervention_modification_date', DateTime(), default=func.now()),
+                                                Column('assuetude_intervention_modification_employe', Text()),
+                                                extend_existing=True,
+                                                autoload=autoload)
     return assuetudeInterventionForInstitution
 
 
@@ -273,11 +273,11 @@ def getLinkInstitutionAssuetudeIntervention(metadata):
     linkInstitutionAssuetudeIntervention = Table('link_institution_assuetude_intervention', metadata,
                                                   Column('institution_fk', Integer(),
                                                           ForeignKey('institution.institution_pk'),
-                                                          primary_key = True),
+                                                          primary_key=True),
                                                   Column('assuetude_intervention_fk', Integer(),
                                                           ForeignKey('assuetude_intervention_for_institution.assuetude_intervention_pk'),
-                                                          primary_key = True),
-                                                  useexisting=True,
+                                                          primary_key=True),
+                                                  extend_existing=True,
                                                   autoload=autoload)
     return linkInstitutionAssuetudeIntervention
 
@@ -286,20 +286,20 @@ def getAllAssuetudeActiviteProposeeForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('assuetude_activite_proposee_for_institution'):
         autoload = True
-    assuetudeActiviteProposeeForInstitution =Table('assuetude_activite_proposee_for_institution', metadata,
-                                                   Column('assuetude_activite_proposee_pk', Integer(),
-                                                          Sequence('assuetude_activite_proposee_pk_seq'),
-                                                          primary_key = True),
-                                                   Column('assuetude_activite_proposee_nom', Text()),
-                                                   Column('assuetude_activite_proposee_actif', Boolean(), default = True),
-                                                   Column('assuetude_activite_proposee_num_ordre', Integer(), default = 0),
-                                                   Column('assuetude_activite_proposee_public', Boolean(), default = True),
-                                                   Column('assuetude_activite_proposee_pro', Boolean(), default = True),
-                                                   Column('assuetude_activite_proposee_creation_date', DateTime()),
-                                                   Column('assuetude_activite_proposee_modification_date', DateTime(), default = func.now()),
-                                                   Column('assuetude_activite_proposee_modification_employe', Text()),
-                                                   useexisting=True,
-                                                   autoload=autoload)
+    assuetudeActiviteProposeeForInstitution = Table('assuetude_activite_proposee_for_institution', metadata,
+                                                    Column('assuetude_activite_proposee_pk', Integer(),
+                                                           Sequence('assuetude_activite_proposee_pk_seq'),
+                                                           primary_key=True),
+                                                    Column('assuetude_activite_proposee_nom', Text()),
+                                                    Column('assuetude_activite_proposee_actif', Boolean(), default=True),
+                                                    Column('assuetude_activite_proposee_num_ordre', Integer(), default=0),
+                                                    Column('assuetude_activite_proposee_public', Boolean(), default=True),
+                                                    Column('assuetude_activite_proposee_pro', Boolean(), default=True),
+                                                    Column('assuetude_activite_proposee_creation_date', DateTime()),
+                                                    Column('assuetude_activite_proposee_modification_date', DateTime(), default=func.now()),
+                                                    Column('assuetude_activite_proposee_modification_employe', Text()),
+                                                    extend_existing=True,
+                                                    autoload=autoload)
     return assuetudeActiviteProposeeForInstitution
 
 
@@ -310,11 +310,11 @@ def getLinkInstitutionAssuetudeActiviteProposeePublic(metadata):
     linkInstitutionAssuetudeActiviteProposeePublic = Table('link_institution_assuetude_activite_proposee_public', metadata,
                                                      Column('institution_fk', Integer(),
                                                             ForeignKey('institution.institution_pk'),
-                                                            primary_key = True),
+                                                            primary_key=True),
                                                      Column('assuetude_activite_proposee_public_fk', Integer(),
                                                             ForeignKey('assuetude_activite_proposee_for_institution.assuetude_activite_proposee_pk'),
-                                                            primary_key = True),
-                                                     useexisting=True,
+                                                            primary_key=True),
+                                                     extend_existing=True,
                                                      autoload=autoload)
     return linkInstitutionAssuetudeActiviteProposeePublic
 
@@ -326,11 +326,11 @@ def getLinkInstitutionAssuetudeActiviteProposeePro(metadata):
     linkInstitutionAssuetudeActiviteProposeePro = Table('link_institution_assuetude_activite_proposee_pro', metadata,
                                                      Column('institution_fk', Integer(),
                                                             ForeignKey('institution.institution_pk'),
-                                                            primary_key = True),
+                                                            primary_key=True),
                                                      Column('assuetude_activite_proposee_pro_fk', Integer(),
                                                             ForeignKey('assuetude_activite_proposee_for_institution.assuetude_activite_proposee_pk'),
-                                                            primary_key = True),
-                                                     useexisting=True,
+                                                            primary_key=True),
+                                                     extend_existing=True,
                                                      autoload=autoload)
     return linkInstitutionAssuetudeActiviteProposeePro
 
@@ -339,18 +339,18 @@ def getAllAssuetudeThematiqueForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('assuetude_thematique_for_institution'):
         autoload = True
-    assuetudeThematiqueForInstitution =Table('assuetude_thematique_for_institution', metadata,
-                                             Column('assuetude_thematique_pk', Integer(),
-                                                     Sequence('assuetude_thematique_for_institution_pk_seq'),
-                                                     primary_key = True),
-                                             Column('assuetude_thematique_nom', Text()),
-                                             Column('assuetude_thematique_actif', Boolean(), default = True),
-                                             Column('assuetude_thematique_num_ordre', Integer(), default = 0),
-                                             Column('assuetude_thematique_creation_date', DateTime()),
-                                             Column('assuetude_thematique_modification_date', DateTime(), default = func.now()),
-                                             Column('assuetude_thematique_modification_employe', Text()),
-                                             useexisting=True,
-                                             autoload=autoload)
+    assuetudeThematiqueForInstitution = Table('assuetude_thematique_for_institution', metadata,
+                                              Column('assuetude_thematique_pk', Integer(),
+                                                      Sequence('assuetude_thematique_for_institution_pk_seq'),
+                                                      primary_key=True),
+                                              Column('assuetude_thematique_nom', Text()),
+                                              Column('assuetude_thematique_actif', Boolean(), default=True),
+                                              Column('assuetude_thematique_num_ordre', Integer(), default=0),
+                                              Column('assuetude_thematique_creation_date', DateTime()),
+                                              Column('assuetude_thematique_modification_date', DateTime(), default=func.now()),
+                                              Column('assuetude_thematique_modification_employe', Text()),
+                                              extend_existing=True,
+                                              autoload=autoload)
     return assuetudeThematiqueForInstitution
 
 
@@ -361,11 +361,11 @@ def getLinkInstitutionAssuetudeThematique(metadata):
     linkInstitutionAssuetudeThematique = Table('link_institution_assuetude_thematique', metadata,
                                             Column('institution_fk', Integer(),
                                                    ForeignKey('institution.institution_pk'),
-                                                   primary_key = True),
+                                                   primary_key=True),
                                             Column('assuetude_thematique_fk', Integer(),
                                                    ForeignKey('assuetude_thematique_for_institution.assuetude_thematique_pk'),
-                                                   primary_key = True),
-                                            useexisting=True,
+                                                   primary_key=True),
+                                            extend_existing=True,
                                             autoload=autoload)
     return linkInstitutionAssuetudeThematique
 
@@ -379,7 +379,7 @@ def getLinkInstitutionCommuneCouverte(metadata):
                                                    ForeignKey('institution.institution_pk')),
                                             Column('commune_fk', Integer(),
                                                    ForeignKey('commune.com_pk')),
-                                            useexisting=True,
+                                            extend_existing=True,
                                             autoload=autoload)
     return linkInstitutionCommuneCouverte
 
@@ -391,11 +391,11 @@ def getLinkInstitutionClpsProprio(metadata):
     linkInstitutionClpsProprio = Table('link_institution_clps_proprio', metadata,
                                         Column('institution_fk', Integer(),
                                                 ForeignKey('institution.institution_pk'),
-                                                primary_key = True),
+                                                primary_key=True),
                                         Column('clps_fk', Integer(),
                                                 ForeignKey('clps.clps_pk'),
-                                                primary_key = True),
-                                        useexisting=True,
+                                                primary_key=True),
+                                        extend_existing=True,
                                         autoload=autoload)
     return linkInstitutionClpsProprio
 
@@ -407,11 +407,11 @@ def getLinkInstitutionSousPlateForme(metadata):
     linkInstitutionSousPlateForme = Table('link_institution_sousplateforme', metadata,
                                      Column('institution_fk', Integer(),
                                             ForeignKey('institution.institution_pk'),
-                                            primary_key = True),
+                                            primary_key=True),
                                      Column('sousplateforme_fk', Integer(),
                                             ForeignKey('sousplateforme.sousplateforme_pk'),
-                                            primary_key = True),
-                                     useexisting=True,
+                                            primary_key=True),
+                                     extend_existing=True,
                                      autoload=autoload)
     return linkInstitutionSousPlateForme
 
@@ -423,15 +423,15 @@ def getAllSupport(metadata):
     support = Table('support', metadata,
                     Column('support_pk', Integer(),
                            Sequence('support_support_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('support_titre', Text()),
                     Column('support_description', Text()),
                     Column('support_actif', Boolean()),
                     Column('support_creation_date', DateTime()),
-                    Column('support_modification_date', DateTime(), default = func.now()),
+                    Column('support_modification_date', DateTime(), default=func.now()),
                     Column('support_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return support
 
 
@@ -442,7 +442,7 @@ def getAllRessource(metadata):
     ressource = Table('ressource', metadata,
                     Column('ressource_pk', Integer(),
                            Sequence('ressource_ressource_pk_seq'),
-                           primary_key = True),
+                           primary_key=True),
                     Column('ressource_titre', Text()),
                     Column('ressource_description', Text()),
                     Column('ressource_auteur', Text()),
@@ -468,10 +468,10 @@ def getAllRessource(metadata):
                     Column('ressource_mission_reseau_echange', Boolean()),
                     Column('ressource_mission_formation', Boolean()),
                     Column('ressource_creation_date', DateTime()),
-                    Column('ressource_modification_date', DateTime(), default = func.now()),
+                    Column('ressource_modification_date', DateTime(), default=func.now()),
                     Column('ressource_modification_employe', Text()),
                     autoload=autoload,
-                    useexisting=True)
+                    extend_existing=True)
     return ressource
 
 
@@ -482,11 +482,11 @@ def getLinkRessourceMotCle(metadata):
     linkRessourceMotCle = Table('link_ressource_mot_cle', metadata,
                                           Column('ressource_fk', Integer(),
                                                  ForeignKey('ressource.ressource_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('motcle_fk', Integer(),
                                                  ForeignKey('mot_cle.motcle_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkRessourceMotCle
 
@@ -498,11 +498,11 @@ def getLinkRessourceTheme(metadata):
     linkRessourceTheme = Table('link_ressource_theme', metadata,
                                           Column('ressource_fk', Integer(),
                                                  ForeignKey('ressource.ressource_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('theme_fk', Integer(),
                                                  ForeignKey('theme.theme_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkRessourceTheme
 
@@ -514,11 +514,11 @@ def getLinkRessourcePublic(metadata):
     linkRessourcePublic = Table('link_ressource_public', metadata,
                                           Column('ressource_fk', Integer(),
                                                  ForeignKey('ressource.ressource_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('public_fk', Integer(),
                                                  ForeignKey('public.public_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkRessourcePublic
 
@@ -530,13 +530,14 @@ def getLinkRessourceSupport(metadata):
     linkRessourceSupport = Table('link_ressource_support', metadata,
                                   Column('ressource_fk', Integer(),
                                          ForeignKey('ressource.ressource_pk'),
-                                         primary_key = True),
+                                         primary_key=True),
                                   Column('support_fk', Integer(),
                                          ForeignKey('support.support_pk'),
-                                         primary_key = True),
-                                  useexisting=True,
+                                         primary_key=True),
+                                  extend_existing=True,
                                   autoload=autoload)
     return linkRessourceSupport
+
 
 def getLinkRessourceClpsDispo(metadata):
     """
@@ -548,13 +549,14 @@ def getLinkRessourceClpsDispo(metadata):
     linkRessourceClpsDispo = Table('link_ressource_clps_dispo', metadata,
                                             Column('ressource_fk', Integer(),
                                                    ForeignKey('ressource.ressource_pk'),
-                                                   primary_key = True),
+                                                   primary_key=True),
                                             Column('clps_fk', Integer(),
                                                    ForeignKey('clps.clps_pk'),
-                                                  primary_key = True),
-                                            useexisting=True,
+                                                  primary_key=True),
+                                            extend_existing=True,
                                             autoload=autoload)
     return linkRessourceClpsDispo
+
 
 def getLinkRessourceClpsProprio(metadata):
     """
@@ -566,13 +568,14 @@ def getLinkRessourceClpsProprio(metadata):
     linkRessourceClpsProprio = Table('link_ressource_clps_proprio', metadata,
                                   Column('ressource_fk', Integer(),
                                          ForeignKey('ressource.ressource_pk'),
-                                         primary_key = True),
+                                         primary_key=True),
                                   Column('clps_fk', Integer(),
                                          ForeignKey('clps.clps_pk'),
-                                         primary_key = True),
-                                  useexisting=True,
+                                         primary_key=True),
+                                  extend_existing=True,
                                   autoload=autoload)
     return linkRessourceClpsProprio
+
 
 def getAllExperience(metadata):
     autoload = False
@@ -581,7 +584,7 @@ def getAllExperience(metadata):
     experience = Table('experience', metadata,
                   Column('experience_pk', Integer(),
                          Sequence('experience_experience_pk_seq'),
-                         primary_key = True),
+                         primary_key=True),
                   Column('experience_titre', Text()),
                   Column('experience_resume', Text()),
                   Column('experience_personne_contact', Text()),
@@ -613,9 +616,9 @@ def getAllExperience(metadata):
                   Column('experience_mission_accompagnement_projet', Boolean()),
                   Column('experience_mission_reseau_echange', Boolean()),
                   Column('experience_mission_formation', Boolean()),
-                  Column('experience_creation_date', DateTime(), default = func.now()),
+                  Column('experience_creation_date', DateTime(), default=func.now()),
                   Column('experience_creation_employe', Text()),
-                  Column('experience_modification_date', DateTime(), default = func.now()),
+                  Column('experience_modification_date', DateTime(), default=func.now()),
                   Column('experience_modification_employe', Text()),
                   Column('experience_etat', Text()),
                   Column('experience_publication_siss', Boolean()),
@@ -627,7 +630,7 @@ def getAllExperience(metadata):
                            ForeignKey('clps.clps_pk'),
                            nullable=False),
                   autoload=autoload,
-                  useexisting=True)
+                  extend_existing=True)
     return experience
 
 
@@ -642,7 +645,7 @@ def getLinkExperienceInstitutionPorteur(metadata):
                                                  Column('institution_fk', Integer(),
                                                         ForeignKey('institution.institution_pk'),
                                                         primary_key=True),
-                                                 useexisting=True,
+                                                 extend_existing=True,
                                                  autoload=autoload)
     return linkExperienceInstitutionPorteur
 
@@ -658,7 +661,7 @@ def getLinkExperienceInstitutionPartenaire(metadata):
                                                   Column('institution_fk', Integer(),
                                                           ForeignKey('institution.institution_pk'),
                                                           primary_key=True),
-                                                  useexisting=True,
+                                                  extend_existing=True,
                                                   autoload=autoload)
     return linkExperienceInstitutionPartenaire
 
@@ -674,7 +677,7 @@ def getLinkExperienceInstitutionRessource(metadata):
                                                 Column('institution_fk', Integer(),
                                                        ForeignKey('institution.institution_pk'),
                                                        primary_key=True),
-                                                useexisting=True,
+                                                extend_existing=True,
                                                 autoload=autoload)
     return linkExperienceInstitutionRessource
 
@@ -686,11 +689,11 @@ def getLinkExperienceRessource(metadata):
     linkExperienceRessource = Table('link_experience_ressource', metadata,
                                      Column('experience_fk', Integer(),
                                             ForeignKey('experience.experience_pk'),
-                                            primary_key = True),
+                                            primary_key=True),
                                      Column('ressource_fk', Integer(),
                                             ForeignKey('ressource.ressource_pk'),
-                                            primary_key = True),
-                                     useexisting=True,
+                                            primary_key=True),
+                                     extend_existing=True,
                                      autoload=autoload)
     return linkExperienceRessource
 
@@ -702,11 +705,11 @@ def getLinkExperienceMilieuDeVie(metadata):
     linkExperienceMilieuDeVie = Table('link_experience_milieudevie', metadata,
                                      Column('experience_fk', Integer(),
                                             ForeignKey('experience.experience_pk'),
-                                            primary_key = True),
+                                            primary_key=True),
                                      Column('milieudevie_fk', Integer(),
                                             ForeignKey('milieudevie.milieudevie_pk'),
-                                            primary_key = True),
-                                     useexisting=True,
+                                            primary_key=True),
+                                     extend_existing=True,
                                      autoload=autoload)
     return linkExperienceMilieuDeVie
 
@@ -718,11 +721,11 @@ def getLinkExperienceSousPlateForme(metadata):
     linkExperienceSousPlateForme = Table('link_experience_sousplateforme', metadata,
                                      Column('experience_fk', Integer(),
                                             ForeignKey('experience.experience_pk'),
-                                            primary_key = True),
+                                            primary_key=True),
                                      Column('sousplateforme_fk', Integer(),
                                             ForeignKey('sousplateforme.sousplateforme_pk'),
-                                            primary_key = True),
-                                     useexisting=True,
+                                            primary_key=True),
+                                     extend_existing=True,
                                      autoload=autoload)
     return linkExperienceSousPlateForme
 
@@ -734,11 +737,11 @@ def getLinkExperienceMotCle(metadata):
     linkExperienceMotCle = Table('link_experience_mot_cle', metadata,
                                           Column('experience_fk', Integer(),
                                                  ForeignKey('experience.experience_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('motcle_fk', Integer(),
                                                  ForeignKey('mot_cle.motcle_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkExperienceMotCle
 
@@ -750,11 +753,11 @@ def getLinkExperienceCommune(metadata):
     linkExperienceCommune = Table('link_experience_commune', metadata,
                                           Column('experience_fk', Integer(),
                                                  ForeignKey('experience.experience_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('commune_fk', Integer(),
                                                  ForeignKey('commune.com_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkExperienceCommune
 
@@ -766,11 +769,11 @@ def getLinkExperienceTheme(metadata):
     linkExperienceTheme = Table('link_experience_theme', metadata,
                                           Column('experience_fk', Integer(),
                                                  ForeignKey('experience.experience_pk'),
-                                                 primary_key = True),
+                                                 primary_key=True),
                                           Column('theme_fk', Integer(),
                                                  ForeignKey('theme.theme_pk'),
-                                                 primary_key = True),
-                                          useexisting=True,
+                                                 primary_key=True),
+                                          extend_existing=True,
                                           autoload=autoload)
     return linkExperienceTheme
 
@@ -782,11 +785,11 @@ def getLinkExperiencePublic(metadata):
     linkExperiencePublic = Table('link_experience_public', metadata,
                                   Column('experience_fk', Integer(),
                                          ForeignKey('experience.experience_pk'),
-                                         primary_key = True),
+                                         primary_key=True),
                                   Column('public_fk', Integer(),
                                          ForeignKey('public.public_pk'),
-                                         primary_key = True),
-                                  useexisting=True,
+                                         primary_key=True),
+                                  extend_existing=True,
                                   autoload=autoload)
     return linkExperiencePublic
 
@@ -798,11 +801,11 @@ def getLinkExperienceClpsProprio(metadata):
     linkExperienceClpsProprio = Table('link_experience_clps_proprio', metadata,
                                       Column('experience_fk', Integer(),
                                              ForeignKey('experience.experience_pk'),
-                                             primary_key = True),
+                                             primary_key=True),
                                       Column('clps_fk', Integer(),
                                              ForeignKey('clps.clps_pk'),
-                                             primary_key = True),
-                                      useexisting=True,
+                                             primary_key=True),
+                                      extend_existing=True,
                                       autoload=autoload)
     return linkExperienceClpsProprio
 
@@ -814,10 +817,10 @@ def getAllRecit(metadata):
     recit = Table('recit', metadata,
                   Column('recit_pk', Integer(),
                          Sequence('recit_recit_pk_seq'),
-                         primary_key = True),
+                         primary_key=True),
                   Column('recit_description', Text()),
                   autoload=autoload,
-                  useexisting=True)
+                  extend_existing=True)
     return recit
 
 
@@ -828,7 +831,7 @@ def getAllAuteur(metadata):
     auteur = Table('auteur', metadata,
                    Column('auteur_pk', Integer(),
                            Sequence('auteur_auteur_pk_seq', optional=True),
-                           primary_key = True),
+                           primary_key=True),
                    Column('auteur_nom', Text()),
                    Column('auteur_prenom', Text()),
                    Column('auteur_email', Text()),
@@ -837,13 +840,14 @@ def getAllAuteur(metadata):
                    Column('auteur_institution', Text()),
                    Column('auteur_id_filemaker', Text()),
                    Column('auteur_creation_date', DateTime()),
-                   Column('auteur_actif', Boolean(), default = True),
-                   Column('auteur_for_experience', Boolean(), default = False),
-                   Column('auteur_for_institution', Boolean(), default = False),
-                   Column('auteur_modification_date', DateTime(), default = func.now()),
+                   Column('auteur_actif', Boolean(), default=True),
+                   Column('auteur_for_experience', Boolean(), default=False),
+                   Column('auteur_for_institution', Boolean(), default=False),
+                   Column('auteur_modification_date', DateTime(), default=func.now()),
                    Column('auteur_modification_employe', Text()),
                    autoload=autoload)
     return auteur
+
 
 def getAllRechercheLog(metadata):
     autoload = False
@@ -852,7 +856,7 @@ def getAllRechercheLog(metadata):
     rechercheLog = Table('recherche_log', metadata,
                              Column('recherchelog_pk', Integer(),
                                     Sequence('recherche_log_recherchelog_pk_seq', optional=True),
-                                    primary_key = True),
+                                    primary_key=True),
                              Column('recherchelog_requete', Text()),
                              Column('recherchelog_user', Text()),
                              Column('recherchelog_experience_fk', Integer()),
@@ -860,6 +864,6 @@ def getAllRechercheLog(metadata):
                              Column('recherchelog_theme_fk', Integer()),
                              Column('recherchelog_public_fk', Integer()),
                              Column('recherchelog_motcle_fk', Integer()),
-                             Column('recherchelog_date', DateTime(), default = func.now()),
+                             Column('recherchelog_date', DateTime(), default=func.now()),
                     autoload=autoload)
     return rechercheLog

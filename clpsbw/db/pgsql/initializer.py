@@ -358,6 +358,7 @@ class ClpsbwModel(object):
                                                     backref=backref('proprio_clps',
                                                                     lazy=True,
                                                                     uselist=False))})
+                 
                            #'institution_ressource': relation(LinkExperienceInstitutionRessource, lazy=True),
                            #'ressource': relation(LinkExperienceRessource, lazy=True)
         model.add('experience', table=experienceTable, mapper_class=Experience)
