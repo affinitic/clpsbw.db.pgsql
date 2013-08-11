@@ -41,6 +41,7 @@ from clpsbw.db.pgsql.baseTypes import (Province,
                                        LinkExperienceMotCle,
                                        LinkExperienceTheme,
                                        LinkExperiencePublic,
+                                       LinkExperienceClpsProprio,
                                        LinkExperienceCommune,
                                        Recit,
                                        Auteur,
@@ -84,6 +85,7 @@ from clpsbw.db.pgsql.tables import (getAllProvince,
                                     getLinkExperienceMotCle,
                                     getLinkExperienceTheme,
                                     getLinkExperiencePublic,
+                                    getLinkExperienceClpsProprio,
                                     getLinkExperienceCommune,
                                     getAllAuteur,
                                     getAllRechercheLog)
@@ -358,7 +360,7 @@ class ClpsbwModel(object):
                                                     backref=backref('proprio_clps',
                                                                     lazy=True,
                                                                     uselist=False))})
-                 
+
                            #'institution_ressource': relation(LinkExperienceInstitutionRessource, lazy=True),
                            #'ressource': relation(LinkExperienceRessource, lazy=True)
         model.add('experience', table=experienceTable, mapper_class=Experience)
@@ -429,6 +431,13 @@ class ClpsbwModel(object):
         model.add('link_experience_public',
                    table=LinkExperiencePublicTable,
                    mapper_class=LinkExperiencePublic)
+
+        LinkExperienceClpsProprioTable = getLinkExperienceClpsProprio(metadata)
+        LinkExperienceClpsProprioTable.create(checkfirst=True)
+        mapper(LinkExperienceClpsProprio, LinkExperienceClpsProprioTable)
+        model.add('link_experience_clps_proprio',
+                   table=LinkExperienceClpsProprioTable,
+                   mapper_class=LinkExperienceClpsProprio)
 
         LinkExperienceCommuneTable = getLinkExperienceCommune(metadata)
         LinkExperienceCommuneTable.create(checkfirst=True)

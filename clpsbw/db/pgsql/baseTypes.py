@@ -174,6 +174,10 @@ class LinkExperiencePublic(MappedClassBase):
     pass
 
 
+class LinkExperienceClpsProprio(MappedClassBase):
+    pass
+
+
 class LinkExperienceCommune(MappedClassBase):
     pass
 
