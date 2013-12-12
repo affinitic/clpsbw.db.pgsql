@@ -45,7 +45,8 @@ from clpsbw.db.pgsql.baseTypes import (Province,
                                        LinkExperienceCommune,
                                        Recit,
                                        Auteur,
-                                       RechercheLog)
+                                       RechercheLog,
+                                       ExperienceMaj)
 from clpsbw.db.pgsql.tables import (getAllProvince,
                                     getAllCommune,
                                     getAllClps,
@@ -88,7 +89,8 @@ from clpsbw.db.pgsql.tables import (getAllProvince,
                                     getLinkExperienceClpsProprio,
                                     getLinkExperienceCommune,
                                     getAllAuteur,
-                                    getAllRechercheLog)
+                                    getAllRechercheLog,
+                                    getAllExperienceMaj)
 
 
 class ClpsbwModel(object):
@@ -110,7 +112,9 @@ class ClpsbwModel(object):
         provinceTable = getAllProvince(metadata)
         provinceTable.create(checkfirst=True)
         mapper(Province, provinceTable)
-        model.add('province', table=provinceTable, mapper_class=Province)
+        model.add('province',
+                  table=provinceTable,
+                  mapper_class=Province)
 
 
 ## table commune ##
@@ -122,20 +126,26 @@ class ClpsbwModel(object):
                                                 backref=backref('commune',
                                                                 lazy=True,
                                                                 uselist=False))})
-        model.add('commune', table=communeTable, mapper_class=Commune)
+        model.add('commune',
+                  table=communeTable,
+                  mapper_class=Commune)
 
 ## table clps ##
         clpsTable = getAllClps(metadata)
         clpsTable.create(checkfirst=True)
         mapper(Clps, clpsTable)
-        model.add('clps', table=clpsTable, mapper_class=Clps)
+        model.add('clps',
+                  table=clpsTable,
+                  mapper_class=Clps)
 
 
 ## table plateforme ##
         plateformeTable = getAllPlateForme(metadata)
         plateformeTable.create(checkfirst=True)
         mapper(PlateForme, plateformeTable)
-        model.add('plateforme', table=plateformeTable, mapper_class=PlateForme)
+        model.add('plateforme',
+                  table=plateformeTable,
+                  mapper_class=PlateForme)
 
 ## table sous_plateforme ##
         sousplateformeTable = getAllSousPlateForme(metadata)
@@ -146,13 +156,17 @@ class ClpsbwModel(object):
                                                   backref=backref('sousplateforme',
                                                                   lazy=True,
                                                                   uselist=False))})
-        model.add('sousplateforme', table=sousplateformeTable, mapper_class=SousPlateForme)
+        model.add('sousplateforme',
+                  table=sousplateformeTable,
+                  mapper_class=SousPlateForme)
 
 ## table public ##
         publicTable = getAllPublic(metadata)
         publicTable.create(checkfirst=True)
         mapper(Public, publicTable)
-        model.add('public', table=publicTable, mapper_class=Public)
+        model.add('public',
+                  table=publicTable,
+                  mapper_class=Public)
 
 ## table milieu de vie ##
         milieuDeVieTable = getAllMilieuDeVie(metadata)
@@ -165,13 +179,17 @@ class ClpsbwModel(object):
         themeTable = getAllTheme(metadata)
         themeTable.create(checkfirst=True)
         mapper(Theme, themeTable)
-        model.add('theme', table=themeTable, mapper_class=Theme)
+        model.add('theme',
+                  table=themeTable,
+                  mapper_class=Theme)
 
 ## table motcle ##
         motCleTable = getAllMotCle(metadata)
         motCleTable.create(checkfirst=True)
         mapper(MotCle, motCleTable)
-        model.add('motcle', table=motCleTable, mapper_class=MotCle)
+        model.add('motcle',
+                  table=motCleTable,
+                  mapper_class=MotCle)
 
 ## table auteur  ##
         auteurTable = getAllAuteur(metadata)
@@ -182,14 +200,18 @@ class ClpsbwModel(object):
                                                             backref=backref('auteurFromExperience',
                                                                             lazy=True,
                                                                             uselist=False))})
-        model.add('auteur', table = auteurTable, mapper_class = Auteur)
+        model.add('auteur',
+                  table = auteurTable,
+                  mapper_class = Auteur)
 
 
 ## table institution-type ##
         institutionTypeTable = getAllInstitutionType(metadata)
         institutionTypeTable.create(checkfirst=True)
         mapper(InstitutionType, institutionTypeTable)
-        model.add('institution_type', table=institutionTypeTable, mapper_class=InstitutionType)
+        model.add('institution_type',
+                  table=institutionTypeTable,
+                  mapper_class=InstitutionType)
 
 
 ## table institution ##
@@ -205,7 +227,9 @@ class ClpsbwModel(object):
                                             uselist=False),
                            'type': relation(InstitutionType,
                                             uselist=False)})
-        model.add('institution', table=institutionTable, mapper_class=Institution)
+        model.add('institution',
+                  table=institutionTable,
+                  mapper_class=Institution)
 
         LinkInstitutionSousPlateFormeTable = getLinkInstitutionSousPlateForme(metadata)
         LinkInstitutionSousPlateFormeTable.create(checkfirst=True)
@@ -251,7 +275,9 @@ class ClpsbwModel(object):
         assuetudeActiviteProposeeForInstitutionTable = getAllAssuetudeActiviteProposeeForInstitution(metadata)
         assuetudeActiviteProposeeForInstitutionTable.create(checkfirst=True)
         mapper(InstitutionAssuetudeActiviteProposee, assuetudeActiviteProposeeForInstitutionTable)
-        model.add('assuetude_activite_proposee_for_institution', table=assuetudeActiviteProposeeForInstitutionTable, mapper_class=InstitutionAssuetudeActiviteProposee)
+        model.add('assuetude_activite_proposee_for_institution',
+                  table=assuetudeActiviteProposeeForInstitutionTable,
+                  mapper_class=InstitutionAssuetudeActiviteProposee)
 
         linkAssuetudeActiviteProposeePublicForInstitutionTable = getLinkInstitutionAssuetudeActiviteProposeePublic(metadata)
         linkAssuetudeActiviteProposeePublicForInstitutionTable.create(checkfirst=True)
@@ -272,7 +298,9 @@ class ClpsbwModel(object):
         assuetudeThematiqueForInstitutionTable = getAllAssuetudeThematiqueForInstitution(metadata)
         assuetudeThematiqueForInstitutionTable.create(checkfirst=True)
         mapper(InstitutionAssuetudeThematique, assuetudeThematiqueForInstitutionTable)
-        model.add('assuetude_thematique_for_institution', table=assuetudeThematiqueForInstitutionTable, mapper_class=InstitutionAssuetudeThematique)
+        model.add('assuetude_thematique_for_institution',
+                  table=assuetudeThematiqueForInstitutionTable,
+                  mapper_class=InstitutionAssuetudeThematique)
 
         linkAssuetudeThematiqueForInstitutionTable = getLinkInstitutionAssuetudeThematique(metadata)
         linkAssuetudeThematiqueForInstitutionTable.create(checkfirst=True)
@@ -287,7 +315,9 @@ class ClpsbwModel(object):
         supportTable = getAllSupport(metadata)
         supportTable.create(checkfirst=True)
         mapper(Support, supportTable)
-        model.add('support', table=supportTable, mapper_class=Support)
+        model.add('support',
+                  table=supportTable,
+                  mapper_class=Support)
 
 
 ## table ressource liee a la table support et a la table theme ##
@@ -299,7 +329,9 @@ class ClpsbwModel(object):
                 #                                backref=backref('ressource',
                 #                                                lazy=True,
                 #                                                uselist=False))})
-        model.add('ressource', table=ressourceTable, mapper_class=Ressource)
+        model.add('ressource',
+                  table=ressourceTable,
+                  mapper_class=Ressource)
 
         LinkRessourceSupportTable = getLinkRessourceSupport(metadata)
         LinkRessourceSupportTable.create(checkfirst=True)
@@ -346,7 +378,9 @@ class ClpsbwModel(object):
         recitTable = getAllRecit(metadata)
         recitTable.create(checkfirst=True)
         mapper(Recit, recitTable)
-        model.add('recit', table=recitTable, mapper_class=Recit)
+        model.add('recit',
+                  table=recitTable,
+                  mapper_class=Recit)
 
 
 ## table experience ##
@@ -360,10 +394,11 @@ class ClpsbwModel(object):
                                                     backref=backref('proprio_clps',
                                                                     lazy=True,
                                                                     uselist=False))})
-
                            #'institution_ressource': relation(LinkExperienceInstitutionRessource, lazy=True),
                            #'ressource': relation(LinkExperienceRessource, lazy=True)
-        model.add('experience', table=experienceTable, mapper_class=Experience)
+        model.add('experience',
+                  table=experienceTable,
+                  mapper_class=Experience)
 
 
         LinkExperienceInstitutionPorteurTable = getLinkExperienceInstitutionPorteur(metadata)
@@ -443,14 +478,30 @@ class ClpsbwModel(object):
         LinkExperienceCommuneTable.create(checkfirst=True)
         mapper(LinkExperienceCommune, LinkExperienceCommuneTable)
         model.add('link_experience_commune',
-                   table=LinkExperienceCommuneTable,
-                   mapper_class=LinkExperienceCommune)
+                  table=LinkExperienceCommuneTable,
+                  mapper_class=LinkExperienceCommune)
 
-        metadata.create_all()
-        return model
+
+
+## table experiencemaj > versionning ##
+        experienceMajTable = getAllExperienceMaj(metadata)
+        experienceMajTable.create(checkfirst=True)
+        mapper(ExperienceMaj, experienceMajTable,
+               properties={'clps_proprio': relation(Clps, uselist=False)})
+        model.add('experience_maj',
+                  table=experienceMajTable,
+                  mapper_class=ExperienceMaj)
+
+
 
 ## table rechercheLog ##
         rechercheLogTable = getAllRechercheLog(metadata)
         rechercheLogTable.create(checkfirst=True)
         mapper(RechercheLog, rechercheLogTable)
-        model.add('rechercheLog', table=rechercheLogTable, mapper_class=Recit)
+        model.add('rechercheLog',
+                  table=rechercheLogTable,
+                  mapper_class=Recit)
+
+
+        metadata.create_all()
+        return model

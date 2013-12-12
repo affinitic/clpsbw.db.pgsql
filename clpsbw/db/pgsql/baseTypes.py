@@ -196,3 +196,7 @@ class Auteur(MappedClassBase):
 
 class RechercheLog(MappedClassBase):
     pass
+
+
+class ExperienceMaj(MappedClassBase):
+    pass

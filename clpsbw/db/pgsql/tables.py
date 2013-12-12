@@ -867,3 +867,62 @@ def getAllRechercheLog(metadata):
                              Column('recherchelog_date', DateTime(), default=func.now()),
                     autoload=autoload)
     return rechercheLog
+
+
+
+#### VERSIONNING et MISE A JOUR
+def getAllExperienceMaj(metadata):
+    autoload = False
+    if metadata.bind.has_table('experience_maj'):
+        autoload = True
+    experience_maj = Table('experience_maj', metadata,
+                      Column('experience_maj_pk', Integer(),
+                             Sequence('experience_maj_experience_maj_pk_seq'),
+                             primary_key=True),
+                      Column('experience_maj_titre', Text()),
+                      Column('experience_maj_resume', Text()),
+                      Column('experience_maj_personne_contact', Text()),
+                      Column('experience_maj_personne_contact_email', Text()),
+                      Column('experience_maj_personne_contact_telephone', Text()),
+                      Column('experience_maj_personne_contact_institution', Text()),
+                      Column('experience_maj_element_contexte', Text()),
+                      Column('experience_maj_objectif', Text()),
+                      Column('experience_maj_public_vise', Text()),
+                      Column('experience_maj_demarche_actions', Text()),
+                      Column('experience_maj_commune_international', Text()),
+                      Column('experience_maj_territoire_tout_brabant_wallon', Boolean()),
+                      Column('experience_maj_periode_deroulement', Text()),
+                      Column('experience_maj_moyens', Text()),
+                      Column('experience_maj_evaluation_enseignement', Text()),
+                      Column('experience_maj_perspective_envisagee', Text()),
+                      Column('experience_maj_institution_porteur_autre', Text()),
+                      Column('experience_maj_institution_partenaire_autre', Text()),
+                      Column('experience_maj_institution_ressource_autre', Text()),
+                      Column('experience_maj_institution_outil_autre', Text()),
+                      Column('experience_maj_formation_suivie', Text()),
+                      Column('experience_maj_autres_ressources', Text()),
+                      Column('experience_maj_aller_plus_loin', Text()),
+                      Column('experience_maj_plate_forme_sante_ecole', Boolean()),
+                      Column('experience_maj_plate_forme_assuetude', Boolean()),
+                      Column('experience_maj_plate_forme_sante_famille', Boolean()),
+                      Column('experience_maj_plate_forme_sante_environnement', Boolean()),
+                      Column('experience_maj_mission_centre_documentation', Boolean()),
+                      Column('experience_maj_mission_accompagnement_projet', Boolean()),
+                      Column('experience_maj_mission_reseau_echange', Boolean()),
+                      Column('experience_maj_mission_formation', Boolean()),
+                      Column('experience_maj_creation_date', DateTime(), default=func.now()),
+                      Column('experience_maj_creation_employe', Text()),
+                      Column('experience_maj_modification_date', DateTime(), default=func.now()),
+                      Column('experience_maj_modification_employe', Text()),
+                      Column('experience_maj_etat', Text()),
+                      Column('experience_maj_publication_siss', Boolean()),
+                      Column('experience_maj_auteur_login', Text()),
+                      Column('experience_maj_auteur_fk', Integer(),
+                               ForeignKey('auteur.auteur_pk'),
+                               nullable=False),
+                      Column('experience_maj_clps_proprio_fk', Integer(),
+                               ForeignKey('clps.clps_pk'),
+                               nullable=False),
+                      autoload=autoload,
+                      extend_existing=True)
+    return experience_maj
