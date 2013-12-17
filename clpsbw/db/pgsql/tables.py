@@ -879,6 +879,7 @@ def getAllExperienceMaj(metadata):
                       Column('experience_maj_pk', Integer(),
                              Sequence('experience_maj_experience_maj_pk_seq'),
                              primary_key=True),
+                      Column('experience_maj_expfk', Integer()),
                       Column('experience_maj_titre', Text()),
                       Column('experience_maj_resume', Text()),
                       Column('experience_maj_personne_contact', Text()),
