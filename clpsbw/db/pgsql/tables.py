@@ -250,7 +250,7 @@ def getAllAssuetudeInterventionForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('assuetude_intervention_for_institution'):
         autoload = True
-    assuetudeInterventionForInstitution = Table('assuetude_intervention_for_institution', metadata,
+    AssuetudeInterventionForInstitution = Table('assuetude_intervention_for_institution', metadata,
                                                 Column('assuetude_intervention_pk', Integer(),
                                                         Sequence('assuetude_intervention_pk_seq'),
                                                         primary_key=True),
@@ -263,14 +263,14 @@ def getAllAssuetudeInterventionForInstitution(metadata):
                                                 Column('assuetude_intervention_modification_employe', Text()),
                                                 extend_existing=True,
                                                 autoload=autoload)
-    return assuetudeInterventionForInstitution
+    return AssuetudeInterventionForInstitution
 
 
-def getLinkInstitutionAssuetudeIntervention(metadata):
+def getLinkAssuetudeInterventionForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('link_institution_assuetude_intervention'):
         autoload = True
-    linkInstitutionAssuetudeIntervention = Table('link_institution_assuetude_intervention', metadata,
+    linkAssuetudeInterventionForInstitution = Table('link_institution_assuetude_intervention', metadata,
                                                   Column('institution_fk', Integer(),
                                                           ForeignKey('institution.institution_pk'),
                                                           primary_key=True),
@@ -279,7 +279,7 @@ def getLinkInstitutionAssuetudeIntervention(metadata):
                                                           primary_key=True),
                                                   extend_existing=True,
                                                   autoload=autoload)
-    return linkInstitutionAssuetudeIntervention
+    return linkAssuetudeInterventionForInstitution
 
 
 def getAllAssuetudeActiviteProposeeForInstitution(metadata):
@@ -303,11 +303,11 @@ def getAllAssuetudeActiviteProposeeForInstitution(metadata):
     return assuetudeActiviteProposeeForInstitution
 
 
-def getLinkInstitutionAssuetudeActiviteProposeePublic(metadata):
+def getLinkAssuetudeActiviteProposeeForInstitutionPublic(metadata):
     autoload = False
     if metadata.bind.has_table('link_institution_assuetude_activite_proposee_public'):
         autoload = True
-    linkInstitutionAssuetudeActiviteProposeePublic = Table('link_institution_assuetude_activite_proposee_public', metadata,
+    linkAssuetudeActiviteProposeeForInstitutionPublic = Table('link_institution_assuetude_activite_proposee_public', metadata,
                                                      Column('institution_fk', Integer(),
                                                             ForeignKey('institution.institution_pk'),
                                                             primary_key=True),
@@ -316,14 +316,14 @@ def getLinkInstitutionAssuetudeActiviteProposeePublic(metadata):
                                                             primary_key=True),
                                                      extend_existing=True,
                                                      autoload=autoload)
-    return linkInstitutionAssuetudeActiviteProposeePublic
+    return linkAssuetudeActiviteProposeeForInstitutionPublic
 
 
-def getLinkInstitutionAssuetudeActiviteProposeePro(metadata):
+def getLinkAssuetudeActiviteProposeeForInstitutionPro(metadata):
     autoload = False
     if metadata.bind.has_table('link_institution_assuetude_activite_proposee_pro'):
         autoload = True
-    linkInstitutionAssuetudeActiviteProposeePro = Table('link_institution_assuetude_activite_proposee_pro', metadata,
+    linkAssuetudeActiviteProposeeForInstitutionPro = Table('link_institution_assuetude_activite_proposee_pro', metadata,
                                                      Column('institution_fk', Integer(),
                                                             ForeignKey('institution.institution_pk'),
                                                             primary_key=True),
@@ -332,10 +332,10 @@ def getLinkInstitutionAssuetudeActiviteProposeePro(metadata):
                                                             primary_key=True),
                                                      extend_existing=True,
                                                      autoload=autoload)
-    return linkInstitutionAssuetudeActiviteProposeePro
+    return linkAssuetudeActiviteProposeeForInstitutionPro
 
 
-def getAllAssuetudeThematiqueForInstitution(metadata):
+def getAllAssuetudeThemeForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('assuetude_thematique_for_institution'):
         autoload = True
@@ -354,11 +354,11 @@ def getAllAssuetudeThematiqueForInstitution(metadata):
     return assuetudeThematiqueForInstitution
 
 
-def getLinkInstitutionAssuetudeThematique(metadata):
+def getLinkAssuetudeThemeForInstitution(metadata):
     autoload = False
     if metadata.bind.has_table('link_institution_assuetude_thematique'):
         autoload = True
-    linkInstitutionAssuetudeThematique = Table('link_institution_assuetude_thematique', metadata,
+    linkAssuetudeThemeForInstitution = Table('link_institution_assuetude_thematique', metadata,
                                             Column('institution_fk', Integer(),
                                                    ForeignKey('institution.institution_pk'),
                                                    primary_key=True),
@@ -367,7 +367,7 @@ def getLinkInstitutionAssuetudeThematique(metadata):
                                                    primary_key=True),
                                             extend_existing=True,
                                             autoload=autoload)
-    return linkInstitutionAssuetudeThematique
+    return linkAssuetudeThemeForInstitution
 
 
 def getLinkInstitutionCommuneCouverte(metadata):

@@ -24,13 +24,13 @@ from clpsbw.db.pgsql.baseTypes import (Province,
                                        LinkInstitutionCommuneCouverte,
                                        LinkInstitutionClpsProprio,
                                        LinkInstitutionSousPlateForme,
-                                       InstitutionAssuetudeIntervention,
-                                       InstitutionAssuetudeActiviteProposee,
-                                       InstitutionAssuetudeThematique,
-                                       LinkInstitutionAssuetudeIntervention,
-                                       LinkInstitutionAssuetudeActiviteProposeePublic,
-                                       LinkInstitutionAssuetudeActiviteProposeePro,
-                                       LinkInstitutionAssuetudeThematique,
+                                       AssuetudeInterventionForInstitution,
+                                       AssuetudeActiviteProposeeForInstitution,
+                                       AssuetudeThemeForInstitution,
+                                       LinkAssuetudeInterventionForInstitution,
+                                       LinkAssuetudeActiviteProposeeForInstitutionPublic,
+                                       LinkAssuetudeActiviteProposeeForInstitutionPro,
+                                       LinkAssuetudeThemeForInstitution,
                                        Experience,
                                        LinkExperienceInstitutionPorteur,
                                        LinkExperienceInstitutionPartenaire,
@@ -63,11 +63,11 @@ from clpsbw.db.pgsql.tables import (getAllProvince,
                                     getLinkInstitutionSousPlateForme,
                                     getAllAssuetudeInterventionForInstitution,
                                     getAllAssuetudeActiviteProposeeForInstitution,
-                                    getAllAssuetudeThematiqueForInstitution,
-                                    getLinkInstitutionAssuetudeIntervention,
-                                    getLinkInstitutionAssuetudeActiviteProposeePublic,
-                                    getLinkInstitutionAssuetudeActiviteProposeePro,
-                                    getLinkInstitutionAssuetudeThematique,
+                                    getAllAssuetudeThemeForInstitution,
+                                    getLinkAssuetudeInterventionForInstitution,
+                                    getLinkAssuetudeActiviteProposeeForInstitutionPublic,
+                                    getLinkAssuetudeActiviteProposeeForInstitutionPro,
+                                    getLinkAssuetudeThemeForInstitution,
                                     getAllSupport,
                                     getAllRessource,
                                     getLinkRessourceSupport,
@@ -257,58 +257,58 @@ class ClpsbwModel(object):
 
 
 ## table info assuetude pour institution ##
-        assuetudeInterventionForInstitutionTable = getAllAssuetudeInterventionForInstitution(metadata)
-        assuetudeInterventionForInstitutionTable.create(checkfirst=True)
-        mapper(InstitutionAssuetudeIntervention, assuetudeInterventionForInstitutionTable)
-        model.add('assuetude_intervention_for_institution', table=assuetudeInterventionForInstitutionTable, mapper_class=InstitutionAssuetudeIntervention)
+        AssuetudeInterventionForInstitutionTable = getAllAssuetudeInterventionForInstitution(metadata)
+        AssuetudeInterventionForInstitutionTable.create(checkfirst=True)
+        mapper(AssuetudeInterventionForInstitution, AssuetudeInterventionForInstitutionTable)
+        model.add('assuetude_intervention_for_institution', table=AssuetudeInterventionForInstitutionTable, mapper_class=AssuetudeInterventionForInstitution)
 
-        linkAssuetudeInterventionForInstitutionTable = getLinkInstitutionAssuetudeIntervention(metadata)
+        linkAssuetudeInterventionForInstitutionTable = getLinkAssuetudeInterventionForInstitution(metadata)
         linkAssuetudeInterventionForInstitutionTable.create(checkfirst=True)
-        mapper(LinkInstitutionAssuetudeIntervention, linkAssuetudeInterventionForInstitutionTable,
+        mapper(LinkAssuetudeInterventionForInstitution, linkAssuetudeInterventionForInstitutionTable,
                primary_key=[linkAssuetudeInterventionForInstitutionTable.c.institution_fk, linkAssuetudeInterventionForInstitutionTable.c.assuetude_intervention_fk],
-               properties={'assuetudeIntervention': relation(InstitutionAssuetudeIntervention,
+               properties={'assuetudeIntervention': relation(AssuetudeInterventionForInstitution,
                                         uselist=False)})
         model.add('link_institution_asuetude_intervention',
                   table=linkAssuetudeInterventionForInstitutionTable,
-                  mapper_class=LinkInstitutionAssuetudeIntervention)
+                  mapper_class=LinkAssuetudeInterventionForInstitution)
 
         assuetudeActiviteProposeeForInstitutionTable = getAllAssuetudeActiviteProposeeForInstitution(metadata)
         assuetudeActiviteProposeeForInstitutionTable.create(checkfirst=True)
-        mapper(InstitutionAssuetudeActiviteProposee, assuetudeActiviteProposeeForInstitutionTable)
+        mapper(AssuetudeActiviteProposeeForInstitution, assuetudeActiviteProposeeForInstitutionTable)
         model.add('assuetude_activite_proposee_for_institution',
                   table=assuetudeActiviteProposeeForInstitutionTable,
-                  mapper_class=InstitutionAssuetudeActiviteProposee)
+                  mapper_class=AssuetudeActiviteProposeeForInstitution)
 
-        linkAssuetudeActiviteProposeePublicForInstitutionTable = getLinkInstitutionAssuetudeActiviteProposeePublic(metadata)
+        linkAssuetudeActiviteProposeePublicForInstitutionTable = getLinkAssuetudeActiviteProposeeForInstitutionPublic(metadata)
         linkAssuetudeActiviteProposeePublicForInstitutionTable.create(checkfirst=True)
-        mapper(LinkInstitutionAssuetudeActiviteProposeePublic, linkAssuetudeActiviteProposeePublicForInstitutionTable,
+        mapper(LinkAssuetudeActiviteProposeeForInstitutionPublic, linkAssuetudeActiviteProposeePublicForInstitutionTable,
                primary_key=[linkAssuetudeActiviteProposeePublicForInstitutionTable.c.institution_fk, linkAssuetudeActiviteProposeePublicForInstitutionTable.c.assuetude_activite_proposee_public_fk])
         model.add('link_institution_asuetude_activite_proposee_public',
                   table=linkAssuetudeActiviteProposeePublicForInstitutionTable,
-                  mapper_class=LinkInstitutionAssuetudeActiviteProposeePublic)
+                  mapper_class=LinkAssuetudeActiviteProposeeForInstitutionPublic)
 
-        linkAssuetudeActiviteProposeeProForInstitutionTable = getLinkInstitutionAssuetudeActiviteProposeePro(metadata)
+        linkAssuetudeActiviteProposeeProForInstitutionTable = getLinkAssuetudeActiviteProposeeForInstitutionPro(metadata)
         linkAssuetudeActiviteProposeeProForInstitutionTable.create(checkfirst=True)
-        mapper(LinkInstitutionAssuetudeActiviteProposeePro, linkAssuetudeActiviteProposeeProForInstitutionTable,
+        mapper(LinkAssuetudeActiviteProposeeForInstitutionPro, linkAssuetudeActiviteProposeeProForInstitutionTable,
                primary_key=[linkAssuetudeActiviteProposeeProForInstitutionTable.c.institution_fk, linkAssuetudeActiviteProposeeProForInstitutionTable.c.assuetude_activite_proposee_pro_fk])
         model.add('link_institution_asuetude_activite_proposee_pro',
                   table=linkAssuetudeActiviteProposeeProForInstitutionTable,
-                  mapper_class=LinkInstitutionAssuetudeActiviteProposeePro)
+                  mapper_class=LinkAssuetudeActiviteProposeeForInstitutionPro)
 
-        assuetudeThematiqueForInstitutionTable = getAllAssuetudeThematiqueForInstitution(metadata)
+        assuetudeThematiqueForInstitutionTable = getAllAssuetudeThemeForInstitution(metadata)
         assuetudeThematiqueForInstitutionTable.create(checkfirst=True)
-        mapper(InstitutionAssuetudeThematique, assuetudeThematiqueForInstitutionTable)
+        mapper(AssuetudeThemeForInstitution, assuetudeThematiqueForInstitutionTable)
         model.add('assuetude_thematique_for_institution',
                   table=assuetudeThematiqueForInstitutionTable,
-                  mapper_class=InstitutionAssuetudeThematique)
+                  mapper_class=AssuetudeThemeForInstitution)
 
-        linkAssuetudeThematiqueForInstitutionTable = getLinkInstitutionAssuetudeThematique(metadata)
-        linkAssuetudeThematiqueForInstitutionTable.create(checkfirst=True)
-        mapper(LinkInstitutionAssuetudeThematique, linkAssuetudeThematiqueForInstitutionTable,
-               primary_key=[linkAssuetudeThematiqueForInstitutionTable.c.institution_fk, linkAssuetudeThematiqueForInstitutionTable.c.assuetude_thematique_fk])
+        linkAssuetudeThemeForInstitutionTable = getLinkAssuetudeThemeForInstitution(metadata)
+        linkAssuetudeThemeForInstitutionTable.create(checkfirst=True)
+        mapper(LinkAssuetudeThemeForInstitution, linkAssuetudeThemeForInstitutionTable,
+               primary_key=[linkAssuetudeThemeForInstitutionTable.c.institution_fk, linkAssuetudeThemeForInstitutionTable.c.assuetude_thematique_fk])
         model.add('link_institution_assuetude_thematique',
-                  table=linkAssuetudeThematiqueForInstitutionTable,
-                  mapper_class=LinkInstitutionAssuetudeThematique)
+                  table=linkAssuetudeThemeForInstitutionTable,
+                  mapper_class=LinkAssuetudeThemeForInstitution)
 
 
 ## table support ##

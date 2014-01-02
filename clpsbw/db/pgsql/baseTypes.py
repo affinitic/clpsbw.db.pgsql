@@ -58,31 +58,31 @@ class InstitutionType(MappedClassBase):
     pass
 
 
-class InstitutionAssuetudeIntervention(MappedClassBase):
+class AssuetudeInterventionForInstitution(MappedClassBase):
     pass
 
 
-class LinkInstitutionAssuetudeIntervention(MappedClassBase):
+class LinkAssuetudeInterventionForInstitution(MappedClassBase):
     pass
 
 
-class InstitutionAssuetudeActiviteProposee(MappedClassBase):
+class AssuetudeActiviteProposeeForInstitution(MappedClassBase):
     pass
 
 
-class LinkInstitutionAssuetudeActiviteProposeePublic(MappedClassBase):
+class LinkAssuetudeActiviteProposeeForInstitutionPublic(MappedClassBase):
     pass
 
 
-class LinkInstitutionAssuetudeActiviteProposeePro(MappedClassBase):
+class LinkAssuetudeActiviteProposeeForInstitutionPro(MappedClassBase):
     pass
 
 
-class InstitutionAssuetudeThematique(MappedClassBase):
+class AssuetudeThemeForInstitution(MappedClassBase):
     pass
 
 
-class LinkInstitutionAssuetudeThematique(MappedClassBase):
+class LinkAssuetudeThemeForInstitution(MappedClassBase):
     pass
 
 
