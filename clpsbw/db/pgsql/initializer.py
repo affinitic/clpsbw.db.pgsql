@@ -199,7 +199,9 @@ class ClpsbwModel(object):
                                                             uselist=False,
                                                             backref=backref('auteurFromExperience',
                                                                             lazy=True,
-                                                                            uselist=False))})
+                                                                            uselist=False)),
+                           'clpsOrigine': relation(Clps,
+                                                   uselist=False)})
         model.add('auteur',
                   table = auteurTable,
                   mapper_class = Auteur)

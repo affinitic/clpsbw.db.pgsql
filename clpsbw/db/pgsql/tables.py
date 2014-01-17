@@ -47,6 +47,14 @@ def getAllClps(metadata):
                         Sequence('clps_clps_pk_seq', optional=True),
                         primary_key=True),
                  Column('clps_nom', Text()),
+                 Column('clps_sigle', Text()),
+                 Column('clps_adresse', Text()),
+                 Column('clps_prenom_contact', Text()),
+                 Column('clps_nom_contact', Text()),
+                 Column('clps_email_contact', Text()),
+                 Column('clps_commune_fk', Integer(),
+                           ForeignKey('commune.com_pk'),
+                           nullable=False),
                  autoload=autoload)
     return clps
 
@@ -845,6 +853,9 @@ def getAllAuteur(metadata):
                    Column('auteur_for_institution', Boolean(), default=False),
                    Column('auteur_modification_date', DateTime(), default=func.now()),
                    Column('auteur_modification_employe', Text()),
+                   Column('auteur_clps_fk', Integer(),
+                                             ForeignKey('clps.clps_pk'),
+                                             primary_key=True),
                    autoload=autoload)
     return auteur
 
