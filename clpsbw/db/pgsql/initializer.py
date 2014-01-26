@@ -391,11 +391,11 @@ class ClpsbwModel(object):
         mapper(Experience, experienceTable,
                properties={'institution_porteur': relation(LinkExperienceInstitutionPorteur, lazy=True),
                            'institution_partenaire': relation(LinkExperienceInstitutionPartenaire, lazy=True),
-                           'clps_proprio': relation(Clps,
-                                                    uselist=False,
-                                                    backref=backref('proprio_clps',
-                                                                    lazy=True,
-                                                                    uselist=False))})
+                           'clpsOrigine': relation(Clps,
+                                                    uselist=False)})
+                           #                        backref=backref('proprio_clps',
+                           #                                        lazy=True,
+                           #                                        uselist=False))})
                            #'institution_ressource': relation(LinkExperienceInstitutionRessource, lazy=True),
                            #'ressource': relation(LinkExperienceRessource, lazy=True)
         model.add('experience',
