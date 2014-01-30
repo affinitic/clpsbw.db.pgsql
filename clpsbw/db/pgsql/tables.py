@@ -217,6 +217,8 @@ def getAllInstitution(metadata):
                         Column('institution_plate_forme_assuetude', Boolean()),
                         Column('institution_plate_forme_sante_famille', Boolean()),
                         Column('institution_plate_forme_sante_environnement', Boolean()),
+                        Column('institution_plate_forme_sante_commune', Boolean()),
+                        Column('institution_plate_forme_vie_affective_sexuelle', Boolean()),
                         Column('institution_listing_ressource_plate_forme_sante_ecole', Boolean()),
                         Column('institution_listing_ressource_plate_forme_assuetude', Boolean()),
                         Column('institution_listing_ressource_plate_forme_sante_famille', Boolean()),
