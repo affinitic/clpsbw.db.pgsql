@@ -620,6 +620,8 @@ def getAllExperience(metadata):
                   Column('experience_plate_forme_assuetude', Boolean()),
                   Column('experience_plate_forme_sante_famille', Boolean()),
                   Column('experience_plate_forme_sante_environnement', Boolean()),
+                  Column('experience_plate_forme_sante_commune', Boolean()),
+                  Column('experience_plate_forme_vie_affective_sexuelle', Boolean()),
                   Column('experience_mission_centre_documentation', Boolean()),
                   Column('experience_mission_accompagnement_projet', Boolean()),
                   Column('experience_mission_reseau_echange', Boolean()),
