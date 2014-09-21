@@ -133,7 +133,9 @@ class ClpsbwModel(object):
 ## table clps ##
         clpsTable = getAllClps(metadata)
         clpsTable.create(checkfirst=True)
-        mapper(Clps, clpsTable)
+        mapper(Clps, clpsTable,
+               properties={'commune': relation(Commune,
+                                               uselist=False))
         model.add('clps',
                   table=clpsTable,
                   mapper_class=Clps)
@@ -392,7 +394,7 @@ class ClpsbwModel(object):
                properties={'institution_porteur': relation(LinkExperienceInstitutionPorteur, lazy=True),
                            'institution_partenaire': relation(LinkExperienceInstitutionPartenaire, lazy=True),
                            'clpsOrigine': relation(Clps,
-                                                    uselist=False)})
+                                                   uselist=False)})
                            #                        backref=backref('proprio_clps',
                            #                                        lazy=True,
                            #                                        uselist=False))})
