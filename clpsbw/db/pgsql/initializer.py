@@ -107,7 +107,6 @@ class ClpsbwModel(object):
         model = Model()
         model.metadata = metadata
 
-
 ## table province ##
         provinceTable = getAllProvince(metadata)
         provinceTable.create(checkfirst=True)
@@ -115,7 +114,6 @@ class ClpsbwModel(object):
         model.add('province',
                   table=provinceTable,
                   mapper_class=Province)
-
 
 ## table commune ##
         communeTable = getAllCommune(metadata)
@@ -135,11 +133,10 @@ class ClpsbwModel(object):
         clpsTable.create(checkfirst=True)
         mapper(Clps, clpsTable,
                properties={'commune': relation(Commune,
-                                               uselist=False))
+                                               uselist=False)})
         model.add('clps',
                   table=clpsTable,
                   mapper_class=Clps)
-
 
 ## table plateforme ##
         plateformeTable = getAllPlateForme(metadata)
@@ -176,7 +173,6 @@ class ClpsbwModel(object):
         mapper(MilieuDeVie, milieuDeVieTable)
         model.add('milieudevie', table=milieuDeVieTable, mapper_class=MilieuDeVie)
 
-
 ## table theme ##
         themeTable = getAllTheme(metadata)
         themeTable.create(checkfirst=True)
@@ -205,9 +201,8 @@ class ClpsbwModel(object):
                            'clpsOrigine': relation(Clps,
                                                    uselist=False)})
         model.add('auteur',
-                  table = auteurTable,
-                  mapper_class = Auteur)
-
+                  table=auteurTable,
+                  mapper_class=Auteur)
 
 ## table institution-type ##
         institutionTypeTable = getAllInstitutionType(metadata)
@@ -216,7 +211,6 @@ class ClpsbwModel(object):
         model.add('institution_type',
                   table=institutionTypeTable,
                   mapper_class=InstitutionType)
-
 
 ## table institution ##
         institutionTable = getAllInstitution(metadata)
@@ -228,7 +222,7 @@ class ClpsbwModel(object):
                                                                lazy=True,
                                                                uselist=False)),
                            'auteur': relation(Auteur,
-                                            uselist=False),
+                                              uselist=False),
                            'type': relation(InstitutionType,
                                             uselist=False)})
         model.add('institution',
@@ -259,7 +253,6 @@ class ClpsbwModel(object):
                   table=LinkInstitutionClpsProprioTable,
                   mapper_class=LinkInstitutionClpsProprio)
 
-
 ## table info assuetude pour institution ##
         AssuetudeInterventionForInstitutionTable = getAllAssuetudeInterventionForInstitution(metadata)
         AssuetudeInterventionForInstitutionTable.create(checkfirst=True)
@@ -271,7 +264,7 @@ class ClpsbwModel(object):
         mapper(LinkAssuetudeInterventionForInstitution, linkAssuetudeInterventionForInstitutionTable,
                primary_key=[linkAssuetudeInterventionForInstitutionTable.c.institution_fk, linkAssuetudeInterventionForInstitutionTable.c.assuetude_intervention_fk],
                properties={'assuetudeIntervention': relation(AssuetudeInterventionForInstitution,
-                                        uselist=False)})
+                                                             uselist=False)})
         model.add('link_institution_asuetude_intervention',
                   table=linkAssuetudeInterventionForInstitutionTable,
                   mapper_class=LinkAssuetudeInterventionForInstitution)
@@ -314,7 +307,6 @@ class ClpsbwModel(object):
                   table=linkAssuetudeThemeForInstitutionTable,
                   mapper_class=LinkAssuetudeThemeForInstitution)
 
-
 ## table support ##
         supportTable = getAllSupport(metadata)
         supportTable.create(checkfirst=True)
@@ -322,7 +314,6 @@ class ClpsbwModel(object):
         model.add('support',
                   table=supportTable,
                   mapper_class=Support)
-
 
 ## table ressource liee a la table support et a la table theme ##
         ressourceTable = getAllRessource(metadata)
@@ -344,7 +335,6 @@ class ClpsbwModel(object):
                   table=LinkRessourceSupportTable,
                   mapper_class=LinkRessourceSupport)
 
-
         LinkRessourceThemeTable = getLinkRessourceTheme(metadata)
         LinkRessourceThemeTable.create(checkfirst=True)
         mapper(LinkRessourceTheme, LinkRessourceThemeTable)
@@ -352,14 +342,12 @@ class ClpsbwModel(object):
                   table=LinkRessourceThemeTable,
                   mapper_class=LinkRessourceTheme)
 
-
         LinkRessourcePublicTable = getLinkRessourcePublic(metadata)
         LinkRessourcePublicTable.create(checkfirst=True)
         mapper(LinkRessourcePublic, LinkRessourcePublicTable)
         model.add('link_ressource_public',
                   table=LinkRessourcePublicTable,
                   mapper_class=LinkRessourcePublic)
-
 
         LinkRessourceClpsProprioTable = getLinkRessourceClpsProprio(metadata)
         LinkRessourceClpsProprioTable.create(checkfirst=True)
@@ -369,7 +357,6 @@ class ClpsbwModel(object):
         model.add('link_ressource_clps_proprio',
                   table=LinkRessourceClpsProprioTable,
                   mapper_class=LinkRessourceClpsProprio)
-
 
         LinkRessourceClpsDispoTable = getLinkRessourceClpsDispo(metadata)
         LinkRessourceClpsDispoTable.create(checkfirst=True)
@@ -385,7 +372,6 @@ class ClpsbwModel(object):
         model.add('recit',
                   table=recitTable,
                   mapper_class=Recit)
-
 
 ## table experience ##
         experienceTable = getAllExperience(metadata)
@@ -403,7 +389,6 @@ class ClpsbwModel(object):
         model.add('experience',
                   table=experienceTable,
                   mapper_class=Experience)
-
 
         LinkExperienceInstitutionPorteurTable = getLinkExperienceInstitutionPorteur(metadata)
         LinkExperienceInstitutionPorteurTable.create(checkfirst=True)
@@ -461,22 +446,22 @@ class ClpsbwModel(object):
         LinkExperienceThemeTable.create(checkfirst=True)
         mapper(LinkExperienceTheme, LinkExperienceThemeTable)
         model.add('link_experience_theme',
-                   table=LinkExperienceThemeTable,
-                   mapper_class=LinkExperienceTheme)
+                  table=LinkExperienceThemeTable,
+                  mapper_class=LinkExperienceTheme)
 
         LinkExperiencePublicTable = getLinkExperiencePublic(metadata)
         LinkExperiencePublicTable.create(checkfirst=True)
         mapper(LinkExperiencePublic, LinkExperiencePublicTable)
         model.add('link_experience_public',
-                   table=LinkExperiencePublicTable,
-                   mapper_class=LinkExperiencePublic)
+                  table=LinkExperiencePublicTable,
+                  mapper_class=LinkExperiencePublic)
 
         LinkExperienceClpsProprioTable = getLinkExperienceClpsProprio(metadata)
         LinkExperienceClpsProprioTable.create(checkfirst=True)
         mapper(LinkExperienceClpsProprio, LinkExperienceClpsProprioTable)
         model.add('link_experience_clps_proprio',
-                   table=LinkExperienceClpsProprioTable,
-                   mapper_class=LinkExperienceClpsProprio)
+                  table=LinkExperienceClpsProprioTable,
+                  mapper_class=LinkExperienceClpsProprio)
 
         LinkExperienceCommuneTable = getLinkExperienceCommune(metadata)
         LinkExperienceCommuneTable.create(checkfirst=True)
@@ -484,8 +469,6 @@ class ClpsbwModel(object):
         model.add('link_experience_commune',
                   table=LinkExperienceCommuneTable,
                   mapper_class=LinkExperienceCommune)
-
-
 
 ## table experiencemaj > versionning ##
         experienceMajTable = getAllExperienceMaj(metadata)
@@ -496,8 +479,6 @@ class ClpsbwModel(object):
                   table=experienceMajTable,
                   mapper_class=ExperienceMaj)
 
-
-
 ## table rechercheLog ##
         rechercheLogTable = getAllRechercheLog(metadata)
         rechercheLogTable.create(checkfirst=True)
@@ -505,7 +486,6 @@ class ClpsbwModel(object):
         model.add('rechercheLog',
                   table=rechercheLogTable,
                   mapper_class=Recit)
-
 
         metadata.create_all()
         return model
