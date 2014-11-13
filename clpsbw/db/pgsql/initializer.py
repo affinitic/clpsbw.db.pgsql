@@ -381,9 +381,6 @@ class ClpsbwModel(object):
                            'institution_partenaire': relation(LinkExperienceInstitutionPartenaire, lazy=True),
                            'clpsOrigine': relation(Clps,
                                                    uselist=False)})
-                           #                        backref=backref('proprio_clps',
-                           #                                        lazy=True,
-                           #                                        uselist=False))})
                            #'institution_ressource': relation(LinkExperienceInstitutionRessource, lazy=True),
                            #'ressource': relation(LinkExperienceRessource, lazy=True)
         model.add('experience',
